@@ -2,3 +2,5 @@ testfile
 a.out
 run
 .idea/*
+.idea/
+.idea
