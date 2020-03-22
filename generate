@@ -1,0 +1,9 @@
+#!/usr/bin/python3
+import sys
+import random
+import string
+
+file = open( sys.argv[1], "w")
+for i in range(int(sys.argv[2])):
+    file.write(''.join([random.choice(string.ascii_letters+string.digits+string.punctuation) for i in range(1024)]))
+file.close()
