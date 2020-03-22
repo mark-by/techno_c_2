@@ -8,8 +8,6 @@
 #include <string.h>
 #include <sys/wait.h>
 
-#define AMOUNT_OF_ALL_SYMBOLS 256
-
 /*
    Функция запускает указанное количество (amount) процессов с присвоением
    в переменную counter для каждого процесса
@@ -92,11 +90,12 @@ int main(int args, char** argv) {
     long file_size = get_file_size(file_name);
     char * file = put_file_in_memory(file_name, file_size);
     int rel_pid = 0;
-    int numprocs = strlen(symbols);
-    start_processes(numprocs, &rel_pid);
+    int num_proc = strlen(symbols);
+    start_processes(num_proc, &rel_pid);
     const char symbol = symbols[rel_pid];
     int num_of_symbol = count_symbol_in_file(symbol, file, file_size);
-    printf("%c : %d\n", symbol, num_of_symbol); 
+    printf("%c : %d\n", symbol, num_of_symbol);
+
     while (wait(NULL) > 0);
     return 0;
 }
