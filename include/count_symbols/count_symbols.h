@@ -1,5 +1,6 @@
 #ifndef _COUNT_SYMBOLS_H_
 #define _COUNT_SYMBOLS_H_
+
 /*
    Функция запускает указанное количество (amount) процессов с присвоением
    в переменную counter id для каждого процесса
@@ -10,20 +11,28 @@
  */
 void start_processes( int amount, int * counter);
 
+/*
+ * Функция возвращает размер файла в байтах
+ *
+ * filename - путь к файлу
+ */
 long get_file_size( const char* filename );
 
-char * put_file_in_memory(const char* file_name, long file_size);
 /*
-    Функция считает количество вхождений каждого символа в файл в соответствующей
-    процессу области памяти. Массив symbol_counter - массив счетчиков, где
-    позиция счетчика соответствует определенному символу
+ * Функция загружает файл в память
+ *
+ * file_name - путь к файлу
+ * file_size - размер файла
+ */
+char * put_file_in_memory(const char* file_name, long file_size);
 
-    file - указатель на shared memory считываемого файла
-    symbol_counters - массив из 256 счетчиков (shared memory)
-    rel_proc_id - относительный id процесса
+/*
+    Функция считает количество вхождений указанного символа в файл
+
+    symbol - искомый символ
+    file - указатель на область загруженного в память файл
+    file_size - размер файла
 */
 int count_symbol_in_file(const char symbol, char* file, long file_size);
-
-
 
 #endif
