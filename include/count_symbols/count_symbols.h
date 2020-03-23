@@ -39,5 +39,5 @@ int count_symbol(char symbol, const char* file, long file_size);
  *  Функция считает количество вхождений в указанной области памяти
  *  для каждого символа и результат выводит в out
  */
-void count_symbols(FILE * out, const char * symbols, const char * file_name);
+void count_symbols(FILE * out, const char * symbols, const char * memory, long size);
 #endif
