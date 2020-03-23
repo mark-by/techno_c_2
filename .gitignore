@@ -1,6 +1,6 @@
 testfile
+cmake-build-debug/*
 a.out
 run
 .idea/*
-.idea/
-.idea
+build/*

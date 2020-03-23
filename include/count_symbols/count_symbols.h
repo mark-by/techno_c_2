@@ -33,6 +33,11 @@ char * put_file_in_memory(const char* file_name, long file_size);
     file - указатель на область загруженного в память файл
     file_size - размер файла
 */
-int count_symbol_in_file(const char symbol, char* file, long file_size);
+int count_symbol(char symbol, const char* file, long file_size);
 
+/*
+ *  Функция считает количество вхождений в указанной области памяти
+ *  для каждого символа и результат выводит в out
+ */
+void count_symbols(FILE * out, const char * symbols, const char * file_name);
 #endif

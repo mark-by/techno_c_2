@@ -1,9 +1,9 @@
-#include <sys/sysinfo.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/mman.h>
 #include <fcntl.h>
 #include <math.h>
+#include <stdio.h>
 
 void start_processes( int amount, int * counter) {
     int * shareable_var = mmap(NULL, sizeof(int),
@@ -33,7 +33,7 @@ long get_file_size( const char* filename ) {
     return result;
 }
 
-int count_symbol_in_file(const char symbol, char* file, long file_size) {
+int count_symbol(char symbol, const char* file, long file_size) {
     int counter = 0;
     for (int i = 0; i < file_size; i++) {
         if (file[i] == symbol) {
