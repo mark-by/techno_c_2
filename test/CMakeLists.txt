@@ -1,20 +1,33 @@
-
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
 include_directories("${PROJECT_SOURCE_DIR}/include")
 
-file(GLOB sources "${PROJECT_SOURCE_DIR}/src/*.c")
-list(REMOVE_ITEM sources "${PROJECT_SOURCE_DIR}/src/count_symbols_multiple_proc.c")
-list(REMOVE_ITEM sources "${PROJECT_SOURCE_DIR}/src/count_symbols_single_proc.c")
+file(GLOB tests
+        count_symbols.cpp
+        )
 
-file(GLOB tests "${PROJECT_SOURCE_DIR}/test/*.cpp")
-list(REMOVE_ITEM tests "${PROJECT_SOURCE_DIR}/test/main.cpp")
+add_executable(run_tests
+        ${tests}
+        main.cpp
+        )
+add_executable(run_tests_s
+        ${tests}
+        main.cpp)
 
-foreach(file ${tests})
-    set(name)
-    get_filename_component(name ${file} NAME_WE)
-    add_executable("${name}_tests"
-        ${sources}
-        ${file}
-        "${PROJECT_SOURCE_DIR}/test/main.cpp")
-    target_link_libraries("${name}_tests" gtest_main)
-    add_test(NAME ${name} COMMAND "${name}_tests")
-endforeach()
+target_link_libraries(run_tests
+        count_symbols_lib
+        ${GTEST_LIBRARIES}
+        pthread
+        )
+
+target_link_libraries(run_tests_s
+        count_symbols_lib_s
+        ${GTEST_LIBRARIES}
+        pthread
+        )
+
+add_test(NAME run_tests
+        COMMAND run_tests)
+
+add_test(NAME run_tests_s
+        COMMAND run_tests_s)
