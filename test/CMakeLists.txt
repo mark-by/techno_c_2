@@ -1,28 +1,28 @@
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
+find_package(Threads REQUIRED)
+
 include_directories("${PROJECT_SOURCE_DIR}/include")
 
 file(GLOB tests
         count_symbols.cpp
+        main.cpp
         )
 
 add_executable(run_tests
         ${tests}
-        main.cpp
         )
 add_executable(run_tests_s
         ${tests}
-        main.cpp)
+        )
 
 target_link_libraries(run_tests
         count_symbols_lib
-        ${GTEST_LIBRARIES}
+        gtest_main
         pthread
         )
 
 target_link_libraries(run_tests_s
         count_symbols_lib_s
-        ${GTEST_LIBRARIES}
+        gtest_main
         pthread
         )
 

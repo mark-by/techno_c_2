@@ -3,11 +3,7 @@ dist: bionic
 sudo: true
 
 before_install:
-    - sudo apt-get install cppcheck valgrind libgtest-dev -y
-    - cd /usr/src/gtest
-    - sudo cmake .
-    - sudo make
-    - sudo cp *.a /usr/lib
+    - sudo apt-get install cppcheck valgrind -y
 script:
     - cppcheck --inconclusive --enable=all --check-config --suppress=missingIncludeSystem -I include --language=c src
     - ./configure
