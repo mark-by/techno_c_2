@@ -9,6 +9,6 @@ script:
     - ./configure
     - cd build
     - make test
-    - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes --child-silent-after-fork=yes -s -v ./test/run_tests
-    - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes --child-silent-after-fork=yes -s -v ./test/run_tests_s
+    - valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes --child-silent-after-fork=yes ./test/run_tests
+    - valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes --child-silent-after-fork=yes ./test/run_tests_s
 
