@@ -11,3 +11,5 @@ script:
     - make test
     - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all ./test/run_tests
     - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all ./test/run_tests_s
+    - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all ./src/count_symbols__multiple_processes
+    - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all ./src/count_symbols__single_process
