@@ -1,0 +1,17 @@
+language: c
+dist: bionic
+sudo: true
+
+before_install:
+    - sudo apt-get install cppcheck valgrind libgtest-dev -y
+    - cd /usr/src/gtest
+    - sudo cmake CMakeLists.txt
+    - sudo make
+    - sudo cp *.a /usr/lib
+script:
+    - cppcheck --inconclusive --enable=all --check-config --suppress=missingIncludeSystem -I include --language=c src
+    - ./configure
+    - cd build
+    - make test
+    - valgrind --tool=memcheck --leak-check=full ./test/run_tests
+    - valgrind --tool=memcheck --leak-check=full ./test/run_tests_s
