@@ -22,3 +22,5 @@ add_executable(count_symbols__multiple_processes main.c)
 
 target_link_libraries(count_symbols__single_process count_symbols_lib -lm)
 target_link_libraries(count_symbols__multiple_processes count_symbols_lib_s -lm)
+
+add_executable(speed_test speed_test.c)
