@@ -9,5 +9,5 @@ script:
     - ./configure
     - cd build
     - make test
-    - valgrind --tool=memcheck --leak-check=full ./test/run_tests
-    - valgrind --tool=memcheck --leak-check=full ./test/run_tests_s
+    - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all ./test/run_tests
+    - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all ./test/run_tests_s
