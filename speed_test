@@ -1,0 +1,3 @@
+./generate testfile 102400
+echo "Start speed tests..."
+./build/src/speed_test build/src/count_symbols__multiple_processes build/src/count_symbols__single_process testfile

@@ -1,0 +1,7 @@
+testfile
+clean
+cmake-build-debug/*
+a.out
+run
+.idea/*
+build/*
